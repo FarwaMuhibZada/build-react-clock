@@ -18,7 +18,7 @@ This project aims to replicate the functionality of the 25 + 5 Clock provided by
 ## Demo 📸
 deployment link [(https://react-calculator-farwamuhibzada.netlify.app/)]
 
-![Random Quote Machine Screenshot](./src/assets/Capture.PNG)
+![build-react-clock Screenshot](./src/assets/Capture.PNG)
 
 
 ## Technologies Used 💡

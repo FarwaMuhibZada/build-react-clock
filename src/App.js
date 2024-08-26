@@ -13,7 +13,7 @@ import SetTimer from './components/SetTimer';
 import Clock from './components/Clock';
 import './App.css';
 
-const App = () => {
+function App() {
   const dispatch = useDispatch();
   const breakCount = useSelector((state) => state.breakCount);
   const sessionCount = useSelector((state) => state.sessionCount);

@@ -17,69 +17,72 @@ const initialState = {
   isStarted: false, // New state to track if the timer has started
 };
 
-const rootReducer = (state = initialState, action) => {
+const rootReducer = (state, action) => {
+  // Ensure state is initialized if undefined
+  const currentState = state === undefined ? initialState : state;
+
   switch (action.type) {
     case INCREMENT_BREAK:
-      return state.breakCount < 60 && !state.isPlaying
-        ? { ...state, breakCount: state.breakCount + 1 }
-        : state;
+      return currentState.breakCount < 60 && !currentState.isPlaying
+        ? { ...currentState, breakCount: currentState.breakCount + 1 }
+        : currentState;
     case DECREMENT_BREAK:
-      return state.breakCount > 1 && !state.isPlaying
-        ? { ...state, breakCount: state.breakCount - 1 }
-        : state;
+      return currentState.breakCount > 1 && !currentState.isPlaying
+        ? { ...currentState, breakCount: currentState.breakCount - 1 }
+        : currentState;
     case INCREMENT_SESSION:
-      return state.sessionCount < 60 && !state.isPlaying
+      return currentState.sessionCount < 60 && !currentState.isPlaying
         ? {
-          ...state,
-          sessionCount: state.sessionCount + 1,
-          clockCount: state.isStarted
-            ? state.clockCount
-            : (state.sessionCount + 1) * 60,
+          ...currentState,
+          sessionCount: currentState.sessionCount + 1,
+          clockCount: currentState.isStarted
+            ? currentState.clockCount
+            : (currentState.sessionCount + 1) * 60,
         }
-        : state;
+        : currentState;
     case DECREMENT_SESSION:
-      return state.sessionCount > 1 && !state.isPlaying
+      return currentState.sessionCount > 1 && !currentState.isPlaying
         ? {
-          ...state,
-          sessionCount: state.sessionCount - 1,
-          clockCount: state.isStarted
-            ? state.clockCount
-            : (state.sessionCount - 1) * 60,
+          ...currentState,
+          sessionCount: currentState.sessionCount - 1,
+          clockCount: currentState.isStarted
+            ? currentState.clockCount
+            : (currentState.sessionCount - 1) * 60,
         }
-        : state;
+        : currentState;
     case RESET:
       return {
         ...initialState,
         clockCount:
-          state.currentTimer === 'Session'
-            ? state.sessionCount * 60
-            : state.breakCount * 60,
+          currentState.currentTimer === 'Session'
+            ? currentState.sessionCount * 60
+            : currentState.breakCount * 60,
       };
     case PLAY_PAUSE:
-      if (!state.isPlaying && !state.isStarted) {
+      if (!currentState.isPlaying && !currentState.isStarted) {
         return {
-          ...state,
-          isPlaying: !state.isPlaying,
+          ...currentState,
+          isPlaying: !currentState.isPlaying,
           isStarted: true,
-          clockCount: state.sessionCount * 60,
+          clockCount: currentState.sessionCount * 60,
         };
       }
-      return { ...state, isPlaying: !state.isPlaying };
+      return { ...currentState, isPlaying: !currentState.isPlaying };
     case TICK:
-      if (state.clockCount === 0) {
+      if (currentState.clockCount === 0) {
         return {
-          ...state,
+          ...currentState,
           currentTimer:
-            state.currentTimer === 'Session' ? 'Break' : 'Session',
+            currentState.currentTimer === 'Session' ? 'Break' : 'Session',
           clockCount:
-            (state.currentTimer === 'Session'
-              ? state.breakCount
-              : state.sessionCount) * 60,
+            (currentState.currentTimer === 'Session'
+              ? currentState.breakCount
+              : currentState.sessionCount) * 60,
         };
       }
-      return { ...state, clockCount: state.clockCount - 1 };
+      return { ...currentState, clockCount: currentState.clockCount - 1 };
     default:
-      return state;
+      return currentState;
   }
 };
 

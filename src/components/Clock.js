@@ -15,10 +15,20 @@ const Clock = ({
     <span id="time-left">{convertToTime(clockCount)}</span>
 
     <div className="flex">
-      <button id="start_stop" onClick={handlePlayPause} type="button">
+      <button
+        id="start_stop"
+        onClick={handlePlayPause}
+        type="button"
+        aria-label="Start or Stop Timer" // Added aria-label for accessibility
+      >
         {isPlaying ? <FaPause /> : <FaPlay />}
       </button>
-      <button id="reset" onClick={handleReset} type="button">
+      <button
+        id="reset"
+        onClick={handleReset}
+        type="button"
+        aria-label="Reset Timer" // Added aria-label for accessibility
+      >
         <FaSync />
       </button>
     </div>

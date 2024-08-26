@@ -32,7 +32,9 @@ const rootReducer = (state = initialState, action) => {
         ? {
             ...state,
             sessionCount: state.sessionCount + 1,
-            clockCount: state.isStarted ? state.clockCount : (state.sessionCount + 1) * 60,
+            clockCount: state.isStarted
+              ? state.clockCount
+              : (state.sessionCount + 1) * 60,
           }
         : state;
     case DECREMENT_SESSION:
@@ -40,13 +42,18 @@ const rootReducer = (state = initialState, action) => {
         ? {
             ...state,
             sessionCount: state.sessionCount - 1,
-            clockCount: state.isStarted ? state.clockCount : (state.sessionCount - 1) * 60,
+            clockCount: state.isStarted
+              ? state.clockCount
+              : (state.sessionCount - 1) * 60,
           }
         : state;
     case RESET:
       return {
         ...initialState,
-        clockCount: state.currentTimer === 'Session' ? state.sessionCount * 60 : state.breakCount * 60,
+        clockCount:
+          state.currentTimer === 'Session'
+            ? state.sessionCount * 60
+            : state.breakCount * 60,
       };
     case PLAY_PAUSE:
       if (!state.isPlaying && !state.isStarted) {
@@ -62,8 +69,12 @@ const rootReducer = (state = initialState, action) => {
       if (state.clockCount === 0) {
         return {
           ...state,
-          currentTimer: state.currentTimer === 'Session' ? 'Break' : 'Session',
-          clockCount: (state.currentTimer === 'Session' ? state.breakCount : state.sessionCount) * 60,
+          currentTimer:
+            state.currentTimer === 'Session' ? 'Break' : 'Session',
+          clockCount:
+            (state.currentTimer === 'Session'
+              ? state.breakCount
+              : state.sessionCount) * 60,
         };
       }
       return { ...state, clockCount: state.clockCount - 1 };

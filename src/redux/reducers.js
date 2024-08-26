@@ -14,7 +14,7 @@ const initialState = {
   clockCount: 25 * 60,
   currentTimer: 'Session',
   isPlaying: false,
-  isStarted: false,  // New state to track if the timer has started
+  isStarted: false, // New state to track if the timer has started
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -54,7 +54,7 @@ const rootReducer = (state = initialState, action) => {
           ...state,
           isPlaying: !state.isPlaying,
           isStarted: true,
-          clockCount: state.sessionCount * 60,  // Set clockCount to sessionCount * 60 when starting for the first time
+          clockCount: state.sessionCount * 60, // Set clockCount to sessionCount * 60 when starting for the first time
         };
       }
       return { ...state, isPlaying: !state.isPlaying };

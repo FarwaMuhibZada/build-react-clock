@@ -1,6 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { incrementBreak, decrementBreak, incrementSession, decrementSession, reset, playPause, tick } from './redux/actions';
+import {
+  incrementBreak,
+  decrementBreak,
+  incrementSession,
+  decrementSession,
+  reset,
+  playPause,
+  tick,
+} from './redux/actions';
 import SetTimer from './components/SetTimer';
 import Clock from './components/Clock';
 import './App.css';
@@ -53,9 +61,9 @@ const App = () => {
   };
 
   const convertToTime = (count) => {
-    let minutes = Math.floor(count / 60);
-    let seconds = count % 60;
-    return `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+    const minutes = Math.floor(count / 60);
+    const seconds = count % 60;
+    return `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
   };
 
   return (
@@ -82,7 +90,13 @@ const App = () => {
         handleReset={handleReset}
         convertToTime={convertToTime}
       />
-      <audio id="beep" preload="auto" src="https://www.pacdv.com/sounds/interface_sound_effects/sound107.wav" />
+      <audio
+        id="beep"
+        preload="auto"
+        src="https://www.pacdv.com/sounds/interface_sound_effects/sound107.wav"
+      >
+        <track kind="captions" />
+      </audio>
     </div>
   );
 };

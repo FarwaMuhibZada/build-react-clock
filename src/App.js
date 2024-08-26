@@ -99,6 +99,6 @@ function App() {
       </audio>
     </div>
   );
-};
+}
 
 export default App;

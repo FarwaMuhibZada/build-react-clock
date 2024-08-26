@@ -3,9 +3,9 @@ import { FaMinus, FaPlus } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
 const SetTimer = ({
-  title, 
-  count, 
-  handleDecrease, 
+  title,
+  count,
+  handleDecrease,
   handleIncrease,
 }) => {
   const id = title.toLowerCase();
@@ -13,7 +13,8 @@ const SetTimer = ({
   return (
     <div className="timer-container">
       <h2 id={`${id}-label`}>
-        {title} Length
+        {title} 
+        Length
       </h2>
       <div className="flex actions-wrapper">
         <button

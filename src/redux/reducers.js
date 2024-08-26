@@ -30,22 +30,22 @@ const rootReducer = (state = initialState, action) => {
     case INCREMENT_SESSION:
       return state.sessionCount < 60 && !state.isPlaying
         ? {
-            ...state,
-            sessionCount: state.sessionCount + 1,
-            clockCount: state.isStarted
-              ? state.clockCount
-              : (state.sessionCount + 1) * 60,
-          }
+          ...state,
+          sessionCount: state.sessionCount + 1,
+          clockCount: state.isStarted
+            ? state.clockCount
+            : (state.sessionCount + 1) * 60,
+        }
         : state;
     case DECREMENT_SESSION:
       return state.sessionCount > 1 && !state.isPlaying
         ? {
-            ...state,
-            sessionCount: state.sessionCount - 1,
-            clockCount: state.isStarted
-              ? state.clockCount
-              : (state.sessionCount - 1) * 60,
-          }
+          ...state,
+          sessionCount: state.sessionCount - 1,
+          clockCount: state.isStarted
+            ? state.clockCount
+            : (state.sessionCount - 1) * 60,
+        }
         : state;
     case RESET:
       return {
@@ -61,7 +61,7 @@ const rootReducer = (state = initialState, action) => {
           ...state,
           isPlaying: !state.isPlaying,
           isStarted: true,
-          clockCount: state.sessionCount * 60, // Set clockCount to sessionCount * 60 when starting for the first time
+          clockCount: state.sessionCount * 60,
         };
       }
       return { ...state, isPlaying: !state.isPlaying };

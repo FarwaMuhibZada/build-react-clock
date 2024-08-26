@@ -13,7 +13,7 @@ const SetTimer = ({
   return (
     <div className="timer-container">
       <h2 id={`${id}-label`}>
-        {title} 
+        {title}
         Length
       </h2>
       <div className="flex actions-wrapper">

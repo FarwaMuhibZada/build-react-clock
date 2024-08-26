@@ -1,11 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
-/*
-* {
-  box-sizing: border-box;
-}
-*/
-
+/* Base Styles */
 body {
   background-color: #30336b;
   color: #fff;
@@ -15,6 +10,8 @@ body {
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
   text-align: center;
+  margin: 0;
+  padding: 20px; /* Added padding to avoid content touching the screen edges */
 }
 
 button {
@@ -30,14 +27,16 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
 }
 
 .timer-container {
-  margin: -70px 20px 20px;
+  margin: 20px;
 }
 
 .timer-container h2 {
   margin: 0;
+  font-size: 1.5rem; /* Responsive font size */
 }
 
 .actions-wrapper span {
@@ -50,7 +49,7 @@ button {
   border: 2px solid #fff;
   border-radius: 20px;
   display: inline-block;
-  padding: 10px 100px;
+  padding: 10px 50px;
   margin-top: 20px;
 }
 
@@ -60,4 +59,45 @@ button {
 
 .clock-container h1 {
   margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  button {
+    font-size: 18px;
+    padding: 8px 12px;
+  }
+
+  .actions-wrapper span {
+    font-size: 35px;
+    width: 35px;
+  }
+
+  .clock-container {
+    padding: 10px 40px;
+  }
+
+  .clock-container span {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  button {
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+
+  .actions-wrapper span {
+    font-size: 30px;
+    width: 30px;
+  }
+
+  .clock-container {
+    padding: 10px 30px;
+  }
+
+  .clock-container span {
+    font-size: 50px;
+  }
 }

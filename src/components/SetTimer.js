@@ -2,12 +2,12 @@ import React from 'react';
 import { FaMinus, FaPlus } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
-const SetTimer = ({
+function SetTimer({
   title,
   count,
   handleDecrease,
   handleIncrease,
-}) => {
+}) {
   const id = title.toLowerCase();
 
   return (
@@ -39,7 +39,7 @@ const SetTimer = ({
       </div>
     </div>
   );
-};
+}
 
 SetTimer.propTypes = {
   title: PropTypes.string.isRequired,
